@@ -1,4 +1,8 @@
-<?php include('//localhost/CodeGorilla2/logInSql/register_server.php') ?>
+<?php 
+$root = dirname(__FILE__);
+//define('DS', 'DIRECTORY_SEPARATOR');
+   
+include("$root/register_server.php") ?>
 <!DOCTYPE html>
 <html>
 <head>

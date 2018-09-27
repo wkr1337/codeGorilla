@@ -4,8 +4,9 @@
 //    Shorter constant
     define('DS', 'DIRECTORY_SEPARATOR');
     echo $root;
-    
-    include("//localhost/CodeGorilla2/logInSql/config.php");
+    include("$root/config.php");
+//    include("//localhost/CodeGorilla2/logInSql/config.php");
+   
     if (!isset($_SESSION)) { session_start(); }
     echo 'start';
     if($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -77,7 +78,8 @@
                           <button type="button"
                                   onclick="document.getElementById('loginForm').style.display='none'"
                                   class="cancelbtn">Cancel</button>
-                                  <span class="psw">Forgot <a href="#">password?</a></span>
+                                  <span class="psw">Forgot <a href="#">password?</a></span></br>
+                                  <span class="signUp">Not yet a member? <a href="//localhost/CodeGorilla2/logInSql/register.php">register</a></span>
                       </div>
                   </form>
             

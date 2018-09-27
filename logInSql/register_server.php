@@ -1,6 +1,9 @@
 <?php
 session_start();
-include("//localhost/CodeGorilla2/logInSql/config.php");
+$root = dirname(__FILE__);
+ define('DS', 'DIRECTORY_SEPARATOR');
+   
+include("$root/config.php");
 // initializing variables
 $username = "";
 $email    = "";
@@ -49,6 +52,6 @@ if (isset($_POST['reg_user'])) {
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: //localhost/CodeGorilla2/logInSql/index.php');
+  	header('location: index.php');
   }
 }
