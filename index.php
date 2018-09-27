@@ -7,10 +7,14 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="test.css" type="text/css">
         <title></title>
     </head>
     <body>
         <?php
+        include('./navigationBar.php');
+        include('./logInSql/login.php');
+        include('./footer.php');
         // put your code here
         ?>
     </body>
