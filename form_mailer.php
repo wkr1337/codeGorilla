@@ -1,5 +1,6 @@
     <?php
-    
+    $root = dirname(__FILE__);
+   include("$root/logInSql/register.php");
     $form =  ($_POST["form"]);
 
 if ($form == 'owner') {
@@ -13,13 +14,13 @@ if ($form == 'owner') {
         $country = htmlspecialchars($_POST["country"]);
         $address = htmlspecialchars($_POST["address"]);
         $telephone = htmlspecialchars($_POST["telephone"]);
-        $comment = htmlspecialchars($_POST["comment"]);            
         $gender = htmlspecialchars($_POST["gender"]);
         $pets = htmlspecialchars($_POST["pets"]);
         $pets_allowed = htmlspecialchars($_POST["pets_allowed"]);
         $smoker = htmlspecialchars($_POST["smoker"]);
-        $smoker_allowed = htmlspecialchars($_POST["smoker_allowed"]);
+        $smoking_allowed = htmlspecialchars($_POST["smoking_allowed"]);
         $stay = htmlspecialchars($_POST["stay"]);
+        $stay_end = htmlspecialchars($_POST["stay_end"]);
         $comment = htmlspecialchars($_POST["comment"]);
 
         //Dit is het bericht dat je ontvangt.
@@ -36,11 +37,12 @@ if ($form == 'owner') {
         $msg .= "Pets: " .$pets . $br;;
         $msg .= "Pets allowed: " .$pets_allowed . $br;;
         $msg .= "Smoker: " .$smoker . $br;;
-        $msg .= "Smokers allowed: " .$smoker_allowed . $br;;
-        $msg .= "Duration of stay: " .$stay . $br;;
+        $msg .= "Smoking allowed: " .$smoking_allowed . $br;;
+        $msg .= "Begin date: " .$stay . $br;;
+        $msg .= "End date: " .$stay_end . $br;;
         $msg .= "Comment: " .$comment;
         
-       mail("wro1986@live.nl", "Nieuwe woning beschikbaar!:  "  . $name, $msg);
+       mail("wro1986@live.nl", "Nieuwe woning beschikbaar!:  "  . $msg);
        // mail($email,"Your room is received!  . $name, $msg");
        echo "Thanks, your room is placed!";
        
@@ -59,13 +61,13 @@ if ($form == 'owner') {
             $country = htmlspecialchars($_POST["country"]);
             $address = htmlspecialchars($_POST["address"]);
             $telephone = htmlspecialchars($_POST["telephone"]);
-            $comment = htmlspecialchars($_POST["comment"]);            
             $gender = htmlspecialchars($_POST["gender"]);
             $pets = htmlspecialchars($_POST["pets"]);
             $pets_allowed = htmlspecialchars($_POST["pets_allowed"]);
             $smoker = htmlspecialchars($_POST["smoker"]);
-            $smoker_allowed = htmlspecialchars($_POST["smoker_allowed"]);
+            $smoking_allowed = htmlspecialchars($_POST["smoking_allowed"]);
             $stay = htmlspecialchars($_POST["stay"]);
+            $stay_end = htmlspecialchars($_POST["stay_end"]);
             $comment = htmlspecialchars($_POST["comment"]);
     
             //Dit is het bericht dat je ontvangt.
@@ -82,8 +84,9 @@ if ($form == 'owner') {
             $msg .= "Pets: " .$pets . $br;;
             $msg .= "Pets allowed: " .$pets_allowed . $br;;
             $msg .= "Smoker: " .$smoker . $br;;
-            $msg .= "Smokers allowed: " .$smoker_allowed . $br;;
-            $msg .= "Duration of stay: " .$stay . $br;;
+            $msg .= "Smoking allowed: " .$smoking_allowed . $br;;
+            $msg .= "Begin date: " .$stay . $br;;
+            $msg .= "End date: " .$stay_end . $br;;
             $msg .= "Comment: " .$comment;
             
            echo "Thanks, your request is placed!<br>";

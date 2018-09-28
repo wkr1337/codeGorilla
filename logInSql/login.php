@@ -79,7 +79,7 @@
                                   onclick="document.getElementById('loginForm').style.display='none'"
                                   class="cancelbtn">Cancel</button>
                                   <span class="psw">Forgot <a href="#">password?</a></span></br>
-                                  <span class="signUp">Not yet a member? <a href="//localhost/CodeGorilla2/logInSql/register.php">register</a></span>
+                                  <span class="signUp">Not yet a member? <a href="//localhost/CodeGorilla2/logInSql/register1.php">register</a></span>
                       </div>
                   </form>
             
