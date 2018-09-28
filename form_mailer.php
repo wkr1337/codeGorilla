@@ -101,4 +101,5 @@ if ($form == 'owner') {
 
     ?>
 <br>
+<?php include('./navigationBar.php'); ?>
 <a href="index.php">Back to the homepage</a>

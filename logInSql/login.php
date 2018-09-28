@@ -3,17 +3,18 @@
     $root = dirname(__FILE__);
 //    Shorter constant
     define('DS', 'DIRECTORY_SEPARATOR');
-    echo $root;
-    include("$root/config.php");
+    include_once ("$root/config.php");
 //    include("//localhost/CodeGorilla2/logInSql/config.php");
    
     if (!isset($_SESSION)) { session_start(); }
-    echo 'start';
+    if (isset($_POST['username'])){
     if($_SERVER["REQUEST_METHOD"] === "POST"){
+        echo 'in server if';
+//        if (isset($_POST["username"])){
         // username and password sent from form
-       $myUserName = mysqli_real_escape_string($db, $_POST["username"]);
+       $email = mysqli_real_escape_string($db, $_POST["username"]);
         $myPassword = mysqli_real_escape_string($db, $_POST["password"]);
-        if (empty($myUserName)) {
+        if (empty($email)) {
             array_push($errors, "Username is required");
         }
         if (empty($myPassword)) {
@@ -22,44 +23,49 @@
 
         if (count($errors) == 0) {
             $myPassword = md5($myPassword);
-            $sql = "SELECT id FROM users WHERE username = '$myUserName' AND password = '$myPassword'";
+            $sql = "SELECT id FROM users WHERE email = '$email' AND password = '$myPassword'";
             $result = mysqli_query($db, $sql);
         
-            if(mysqli_num_rows($result) == 1){
-                $_SESSION['login_user'] = $myUserName;
+            if($result){
+                if(mysqli_num_rows($result) == 1){
+                    $_SESSION['login_user'] = $email;
+
+                    header("location: $root/index.php");
+                }
             
-                header("location: ../index.php");
-            }else{
+            }
+        }else{
                 echo "Your login name or password is invalid";
 //            $error = "Your login name or password is invalid";
         }
-        }
+        
   
         
-        
-        
+    } 
     }
+    
 
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="CSS/style.css" type="text/css">
+        <link rel="stylesheet" href="../style_login.css" type="text/css">
+        <link rel="stylesheet" href="style_login.css" type="text/css">
         <title></title>
     </head>
     <body>
         
-        <!--The Modal-->
+        <!-- log in form-->
         <button onclick="document.getElementById('loginForm').style.display='block'; document.getElementsByTagName('button')[1].style.width='100%'">
             Login
         </button>
-        <div id="loginForm" class="modal">
+        <div id="loginForm" class="loginDiv">
             <span onclick="document.getElementById('loginForm').style.display='none'"
-                  class="close" title="Close Modal">&times;</span>
+                  class="close" title="Close">&times;</span>
                   <!--Modal Content-->
-                  <form class="modal-content animate" action="//localhost/CodeGorilla2/logInSql/login.php" method="post">
+                  <form class="loginForm-content" action="//localhost/codegorilla/logInSql/login.php" method="post">
                       <div class="imgcontainer">
-                          <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                          <img src="../image/man.png" alt="Avatar" class="avatar">
                       </div>
                       
                       <div class="container">
@@ -74,12 +80,12 @@
                           </label>
                       </div>
                       
-                      <div class="container" style="background-color:#f1f1f1">
+                      <div class="container">
                           <button type="button"
                                   onclick="document.getElementById('loginForm').style.display='none'"
                                   class="cancelbtn">Cancel</button>
                                   <span class="psw">Forgot <a href="#">password?</a></span></br>
-                                  <span class="signUp">Not yet a member? <a href="//localhost/CodeGorilla2/logInSql/register1.php">register</a></span>
+                                  <span class="signUp">Not yet a member? <a href="//localhost/codegorilla/logInSql/register.php">register</a></span>
                       </div>
                   </form>
             
@@ -87,13 +93,12 @@
         </div>
         <!--Script to hide the login form on click outside the box-->
         <script>
-//          Get the modal
-            var modal = document.getElementById('loginForm');
+            var loginForm = document.getElementById('loginForm');
             
 //          When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
-                if(event.target == modal) {
-                    modal.style.display = "none";
+                if(event.target == loginForm) {
+                    loginForm.style.display = "none";
                 }
             }
         </script>

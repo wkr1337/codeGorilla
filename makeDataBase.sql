@@ -17,6 +17,7 @@ create table Users (
 	startDate DATE NOT NULL,
 	endDate date NOT NULL,
 	comments varchar(200),
+        password varchar(100) NOT NULL,
 	PRIMARY KEY (ID)
 	);
 	

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<?php include('./logInSql/register.php') ?>
 
 <html>
     <head>
         <title>Mis Casa Es Su Casa</title>
         <link rel="stylesheet"  href="style.css" type="text/css" media="all">
+        <?php include('./navigationBar.php'); ?>
 </head>
      
     <body>
@@ -12,7 +14,8 @@
         <p>Please fill out this form</p>
 <div id="form1">
 
-        <form class="phpform" action=form_mailer.php  method="post"> 
+        <form class="phpform" action=form_mailer.php  method="post">
+            <?php include('./logInSql/errors.php'); ?>
             First name:<br> <input class="phpform2" type="text" name="firstname"><br><br>
             Surname:<br> <input class="phpform2" type="text" name="surname"><br><br>
             Email:<br> <input class="phpform2" type="text" name="email"><br><br>
@@ -20,6 +23,8 @@
             City:<br> <input class="phpform2" type="text" name="city"><br><br>
             Address:<br> <input class="phpform2" type="text" name="address"><br><br>
             Telephone:<br> <input class="phpform2" type="text" name="telephone"><br><br>
+            password:<br> <input class="phpform2" type="text" name="password_1"><br><br>
+            password:<br> <input class="phpform2" type="text" name="password_2"><br><br>
 </div>
 <div id="form2">
 
