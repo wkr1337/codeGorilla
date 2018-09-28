@@ -3,7 +3,7 @@
     $root = dirname(__FILE__);
 //    Shorter constant
     define('DS', 'DIRECTORY_SEPARATOR');
-    include_once ("$root/config.php");
+    include_once("$root/config.php");
 //    include("//localhost/CodeGorilla2/logInSql/config.php");
    
     if (!isset($_SESSION)) { session_start(); }
@@ -27,6 +27,7 @@
             $result = mysqli_query($db, $sql);
         
             if($result){
+                echo 'we got result';
                 if(mysqli_num_rows($result) == 1){
                     $_SESSION['login_user'] = $email;
 
@@ -36,7 +37,6 @@
             }
         }else{
                 echo "Your login name or password is invalid";
-//            $error = "Your login name or password is invalid";
         }
         
   
@@ -63,7 +63,7 @@
             <span onclick="document.getElementById('loginForm').style.display='none'"
                   class="close" title="Close">&times;</span>
                   <!--Modal Content-->
-                  <form class="loginForm-content" action="//localhost/codegorilla/logInSql/login.php" method="post">
+                  <form class="loginForm-content" action="//localhost/codeGorilla/logInSql/login.php" method="post">
                       <div class="imgcontainer">
                           <img src="../image/man.png" alt="Avatar" class="avatar">
                       </div>
@@ -85,7 +85,7 @@
                                   onclick="document.getElementById('loginForm').style.display='none'"
                                   class="cancelbtn">Cancel</button>
                                   <span class="psw">Forgot <a href="#">password?</a></span></br>
-                                  <span class="signUp">Not yet a member? <a href="//localhost/codegorilla/logInSql/register.php">register</a></span>
+                                  <span class="signUp">Not yet a member? <a href="//localhost/codeGorilla/logInSql/register.php">register</a></span>
                       </div>
                   </form>
             

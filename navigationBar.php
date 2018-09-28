@@ -45,6 +45,6 @@
   <a href="./form_tenant.php">tenant form</a>
   <a href="./relevant_links.php">relevant links</a>
   <a href="./faq.php">FAQ</a>
-    <?php include("./logInSql/login.php"); ?>
+    <?php include_once("./logInSql/login.php"); ?>
 
 </div>
